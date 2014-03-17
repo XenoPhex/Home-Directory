@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ $1 == 'work' ]]
+then
+  git config --global user.name "Anand V Gaitonde"
+  git config --global user.email "anand.v.gaitonde@boeing.com"
+else
+  git config --global user.name "XenoPhex"
+  git config --global user.email "AnandGaitonde@Gmail.com"
+fi

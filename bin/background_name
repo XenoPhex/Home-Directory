@@ -1,0 +1,10 @@
+#!/usr/bin/osascript
+
+tell application "System Events"
+  set a to (picture of first desktop) as alias
+  set b to path of a as string
+  set AppleScript's text item delimiters to ":"
+  set y to end of text items of b
+# set AppleScript's text item delimiters to "."
+  text item 1 of y
+end tell

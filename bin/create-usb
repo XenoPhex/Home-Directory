@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# set -eE
+
+################################################################
+# MAIN
+################################################################
+
+# set some defaults
+did=2
+nop=
+
+################
+# process options
+while getopts d:n option 2>/dev/null
+do
+    case $option in
+	d) did=$OPTARG ;;
+	n) nop=true ;;
+	\?) usage "unknown argument [$OPTARG]" ; exit 2 ;;
+    esac
+done
+shift $(($OPTIND-1))
+
+########################################
+
+disk=/dev/disk${did}
+rdisk=/dev/rdisk${did}
+echo "disk: $disk"
+echo "rdisk: $rdisk"
+file=$1
+echo "file: $file"
+
+case $file in
+    *.img|*.dmg) image=$file ;;
+    *.iso) 
+	image=${file/iso/dmg}
+	echo "image: $image"
+	if [[ ! -e $image ]] ; then
+	    echo "Creating $image..."
+	    hdiutil convert $file -format UDRW -o $image
+	fi
+	;;
+    *) echo "unknown file: $file" >&2 ; exit 1 ;;
+esac
+
+diskutil unmountDisk $disk
+
+echo "Copying $image to $rdisk..."
+time sudo dd if=$image of=$rdisk bs=1m
+
+echo "Ejecting $disk..."
+diskutil eject $disk

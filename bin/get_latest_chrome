@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+if [[ -e /tmp/chrome-mac.zip ]]; then
+  rm -rf /tmp/chrome-mac*
+fi
+
+VERSION="$(curl -s http://commondatastorage.googleapis.com/chromium-browser-continuous/Mac/LAST_CHANGE)"
+echo $VERSION
+
+cd /tmp
+wget "http://commondatastorage.googleapis.com/chromium-browser-continuous/Mac/$VERSION/chrome-mac.zip"
+
+unzip -q chrome-mac.zip
+cd chrome-mac
+rm -rf /Applications/Chromium.app
+mv Chromium.app /Applications
+rm -rf /tmp/chrome-mac*
+
+unset VERSION

@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+def backup_directory(origin, destination, *excludes)
+  puts "Backing up #{origin}"
+  options = [ "--delete", "--force", "--stats" ]
+
+  unless excludes.empty?
+    excludes = excludes.collect do |location|
+      %Q{--exclude \\"#{location}\\"}
+    end
+    options.push("--delete-excluded #{excludes.join(' ')}")
+  end
+
+  system("echo rsync -ahu --info=progress2 #{options.join(' ')} #{origin}/ #{destination} | bash -")
+end
+
+backup_directory(
+  "~/Library",
+  "/Volumes/personal_backups/Library",
+  'Developer',
+  'Caches',
+  'iTunes',
+  'Incomplete',
+  'Preferences/Macromedia',
+  'Google/GoogleSoftwareUpdate',
+  'Application Support/Steam-backup',
+  'Application Support/Oracle',
+  'Containers',
+  'Safari/LocalStorage',
+  'Application Support/XBMC/userdata/Thumbnails',
+  'Application Support/XBMC/addons',
+  'Application Support/Chromium/Default/Extension*',
+  'Application Support/Chromium/Default/File System',
+  'Address Book Plug-Ins',
+)
+
+backup_directory(
+  "~/Music",
+  "/Volumes/music",
+  'Podcasts',
+  'iTunes',
+)
+
+backup_directory("~/Documents", "/Volumes/personal_backups/Documents")
+backup_directory("~/Pictures", "/Volumes/personal_backups/Pictures")
+backup_directory("~/bin", "/Volumes/personal_backups/bin")

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+fix_dir_permissions(){
+  find . -type d -exec chmod 755 '{}' \;
+  find . -type f -exec chmod 644 '{}' \;
+  find . -type l -exec chmod 644 '{}' \;
+  find . -type d -name "@eaDir" -exec chmod 777 '{}' \;
+  find . -type f -name "*SynoResource" -exec chmod 007 '{}' \;
+}
+
+cd /volume1/video
+fix_dir_permissions
+
+cd /volume1/music
+fix_dir_permissions
+
+cd /volume1/Comics
+fix_dir_permissions
