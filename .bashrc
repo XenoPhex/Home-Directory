@@ -1,6 +1,10 @@
 # Personal aliases and functions.
 alias ls='ls -G'
 alias ll='ls -al'
+alias rsync="rsync -ahP"
+alias adb="~/Development/android/current/platform-tools/adb"
+
+alias rsync_backup="rsync -auhP --delete --force --stats"
 alias brew_uu='brew update && brew upgrade'
 
 # Personal environment variables and startup programs should go in
@@ -14,6 +18,5 @@ fi
 
 if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
   . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
-  #PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\u@\h:\w \$(__git_ps1 \" (%s)\")$"
-  export PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
+  export PS1='\[\033[36m\][\T]\[\033[1;33m\]\[\e[32;1m\][\u@\h \W$(__git_ps1 " (%s)")]\[\e[00m '
 fi

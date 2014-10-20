@@ -2,8 +2,8 @@
 
 if [[ $1 == 'work' ]]
 then
-  git config --global user.name "Anand V Gaitonde"
-  git config --global user.email "anand.v.gaitonde@boeing.com"
+  git config --global user.name "Anand Gaitonde"
+  git config --global user.email "agaitonde@pivotal.io"
 else
   git config --global user.name "XenoPhex"
   git config --global user.email "AnandGaitonde@Gmail.com"
