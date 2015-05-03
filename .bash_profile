@@ -1,7 +1,8 @@
 # Personal environment variables and startup programs.
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH:/usr/local/Cellar/go/1.2.1/libexec/bin:/usr/local/opt/ruby/bin:~/bin:~/go/bin
-export CDPATH=.:~/Downloads
-export GOPATH=~/go
+export EDITOR=vim
+export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:/usr/local/sbin:$PATH:/usr/local/opt/go/libexec/bin:/usr/local/opt/ruby/bin:~/bin:~/go/bin
+export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+export GOPATH=~/go:$GOPATH
 
 # Personal aliases and functions should go in ~/.bashrc.  System wide
 # environment variables and startup programs are in /etc/profile.
