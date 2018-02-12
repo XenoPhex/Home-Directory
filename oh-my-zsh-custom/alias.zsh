@@ -1,6 +1,7 @@
-alias ls='ls --color'
+alias vim='nvim'
+alias ls='ls --color=auto'
 alias ll='ls -alh'
-alias rsync="rsync -ahP"
+alias rsync="rsync -ah --info=progress2 --no-inc-recursive"
 alias unrar='unrar x'
 
 alias xbmcs='cd /Volumes/video/Anime/XBMC\ Series\ Symlinks/'
