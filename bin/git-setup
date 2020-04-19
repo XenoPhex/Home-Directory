@@ -2,9 +2,11 @@
 
 if [[ $1 == 'work' ]]
 then
+  echo "Work User"
   git config --global user.name "Anand Gaitonde"
   git config --global user.email "agaitonde@pivotal.io"
 else
+  echo "Home User"
   git config --global user.name "XenoPhex"
   git config --global user.email "AnandGaitonde@Gmail.com"
 fi
