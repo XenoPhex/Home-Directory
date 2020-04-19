@@ -1,0 +1,31 @@
+[push]
+  default = simple
+[color]
+  ui = true
+[core]
+  autocrlf = input
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[http]
+  postBuffer = 524288000
+[alias]
+  ci = commit -v
+  ac = commit -v --amend --reset-author
+  br = branch
+  co = checkout
+  ds = diff --staged
+  llog = log --date=local
+  lol = log --graph --oneline
+  lola = log --graph --oneline --all
+  lup = log @{u}... --left-right --graph
+  ri = revert -v
+  st = status
+  rage = !"for branch in `git branch -r | awk '{print $1}'`; do echo `git log -1 $branch --pretty=format:"%at:%%$branch%%%cr%%%cn%n"`;done | column -t -s'%' | sort -nr | cut -d ':' -f 2"
+  lage = !"for branch in `git branch | sed 's/^\\* /\\ \\ /'`; do echo `git log -1 --pretty=format:"%at:%%$branch%%%cr%%%cn%n" $branch`;done | column -t -s'%' | sort -nr | cut -d ':' -f 2"
+[url "git@github.com:"]
+  pushInsteadOf = https://github.com/
+  pushInsteadOf = git://github.com/
+[color "diff-highlight"]
+  oldNormal = red bold
+  oldHighlight = red bold 52
+  newNormal = green bold
+  newHighlight = green bold 22
