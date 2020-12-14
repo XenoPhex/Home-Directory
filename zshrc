@@ -76,7 +76,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew command-not-found git go z colored-man-pages)
+plugins=(brew colored-man-pages command-not-found direnv git golang z)
 
 source $ZSH/oh-my-zsh.sh
 
