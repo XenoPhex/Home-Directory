@@ -4,9 +4,9 @@ if [[ $1 == 'work' ]]
 then
   echo "Work User"
   git config --global user.name "Anand Gaitonde"
-  git config --global user.email "agaitonde@pivotal.io"
+  git config --global user.email "agaitonde@apple.com"
 else
   echo "Home User"
   git config --global user.name "XenoPhex"
-  git config --global user.email "AnandGaitonde@Gmail.com"
+  git config --global user.email "github@xenophex.com"
 fi
