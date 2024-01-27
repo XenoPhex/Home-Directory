@@ -4,7 +4,6 @@
   ui = true
 [core]
   autocrlf = input
-  pager = diff-so-fancy | less --tabs=4 -RFX
 [http]
   postBuffer = 524288000
 [alias]
@@ -12,7 +11,8 @@
   ac = commit -v --amend --reset-author
   br = branch
   co = checkout
-  ds = diff --staged
+  ds = difftool --staged --no-symlinks --dir-diff
+  df = difftool --no-symlinks --dir-diff
   llog = log --date=local
   lol = log --graph --oneline
   lola = log --graph --oneline --all
@@ -24,8 +24,10 @@
 [url "git@github.com:"]
   pushInsteadOf = https://github.com/
   pushInsteadOf = git://github.com/
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
+[diff]
+    tool = kitty
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitty +kitten diff $LOCAL $REMOTE
